@@ -1,0 +1,536 @@
+% abtex2-modelo-artigo.tex, v-1.9.2 laurocesar
+% Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/ 
+%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Artigo Acadêmico em conformidade com
+% ABNT NBR 6022:2003: Informação e documentação - Artigo em publicação 
+% periódica científica impressa - Apresentação
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	article,			% indica que é um artigo acadêmico
+	11pt,				% tamanho da fonte
+	oneside,			% para impressão apenas no verso. Oposto a twoside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE % títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+
+% ---
+% PACOTES
+% ---
+
+% ---
+% Pacotes fundamentais 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{ctable}
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+		
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Artigo de Bels e Decibels}
+\autor{Equipe  Trabalhos \and henrique }
+\local{Brasil}
+\data{2022, v-1.0.0}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={Modelo de artigo científico com abnTeX2},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{atigo científico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{3cm}{3cm}{*}
+\setulmarginsandblock{3cm}{3cm}{*}
+\checkandfixthelayout
+% ---
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+
+%---
+%
+% Se desejar escrever o artigo em duas colunas, descomente a linha abaixo
+% e a linha com o texto ``FIM DE ARTIGO EM DUAS COLUNAS''.
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+%
+%---
+% página de titulo
+\maketitle
+
+% resumo em português
+\begin{resumoumacoluna}
+    Este artigo falara sobre a definição de bels e decibels, que são unidades de mediadas de som e quais são suas possiveis utilidades na acustuca e telecomunicações 
+ 
+ \vspace{\onelineskip}
+ 
+ \noindent
+ \textbf{Palavras-chaves}: bels. decibels. som.
+\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução
+% ----------------------------------------------------------
+\section*{Introdução}
+\addcontentsline{toc}{section}{Introdução}
+
+        O decibel (dB) é uma medida da razão entre duas quantidades,
+    sendo usado para uma grande variedade de medições em acústica,
+    física, eletrônica e telecomunicações. Por ser uma razão entre duas
+    quantidades iguais o decibel é uma unidade de medida adimensional
+    semelhante a percentagem. O dB usa o logaritmo decimal (log10) para
+    realizar a compressão de escala. Um exemplo típico de uso do dB é na
+    medição do ganho/perda de potência em um sistema. Além do uso do
+    dB como medida relativa, também existem outras aplicações na
+    medidas de valores absolutos tais como potência e tensão entre outros
+    (dBm, dBV, dBu). O emprego da subunidade dB é para facilitar o seu
+    uso diário (Um decibel (dB) corresponde a um décimo de bel (B)). 
+
+% ----------------------------------------------------------
+% Seção de explicações
+% ----------------------------------------------------------
+\section{origem}
+
+    O bel foi inventado por engenheiros do Bell Labs para quantificar a
+redução no nível acústico sobre um cabo telefônico padrão com 1 milha
+de comprimento. Originalmente era chamado de unidade de
+V.2006 1
+PRINCÍPIO DE SISTEMAS DE TELECOMUNICAÇÕES IFSC
+transmissão ou TU, mas foi renomeado entre 1923 e 1924 em
+homenagem ao fundador do laboratório Alexander Graham Bell.
+
+
+\section{Vantagens do uso do decibels}
+
+    As vantagens do uso do decibel são:
+\begin{itemize}
+    \item   É mais conveniente somar os ganhos em decibéis em estágios
+    sucessivos de um sistema do que multiplicar os seus ganhos
+    lineares.
+    
+    \item     Faixas muito grandes de razões de valores podem ser expressas em
+    decibéis em uma faixa mais moderada possibilitando uma melhor
+    visualização dos valores grandes e pequenos.
+    
+    \item   Na acústica o decibel usado como uma escala logarítmica da razão
+    de intensidade sonora se ajusta melhor a intensidade percebida pelo
+    ouvido humano. O aumento do nível de intensidade em decibéis
+    corresponde aproximadamente ao aumento percebido em qualquer
+    intensidade, fato conhecido com a Lei de potências de Stevens. Por
+    exemplo, um humano percebe um aumento de 90 dB para 95 dB
+    como sendo o mesmo que um aumento de 20 dB para 25 dB.
+\end{itemize}
+
+
+\section{Usos do Bel/Decibel}
+\subsection{Razões de Potência}
+    O cálculo da relação de potência em dB GdB entre dois valores de
+    potência corresponde ao ganho de potência, sendo dado por
+    
+    \begin{equation}
+        {\displaystyle G_{dB}} = 10\log_{10}(\frac{{\displaystyle P_{1}}}{{\displaystyle P_{0}}})
+    \end{equation}
+    
+         Onde P0 e P1 são níveis de potências absolutas expressas na mesma unidade (W, mW, pW, etc), e GdB é a razão entre as potências (ganho) expressa em dB. relação entre 2 potências é conhecida como ganho linear
+
+    \begin{equation}
+        {\displaystyle G_{W/W}} = \frac{{\displaystyle P_{1}}}{{\displaystyle P_{0}}}
+    \end{equation}
+
+        O recíproco do ganho é conhecido como atenuação
+    
+    \begin{equation}
+        {\displaystyle A_{W/W}} = \frac{1}{{\displaystyle G_{W/W}}}
+    \end{equation}
+
+        Em decibéis a atenuação é dada por
+        
+     \begin{equation}
+        {\displaystyle A_{dB}} = 10\log_{10}(\frac{{\displaystyle P_{1}}}{{\displaystyle P_{2}}})^{-1} =  {\displaystyle -G_{dB}}
+    \end{equation}
+    
+        Como o dB é uma unidade de comparação de níveis de potência. Não é
+    correto dizer que uma potência vale X dB e sim que uma potência P1
+     é
+    X dB maior (GdB >0) ou menor (GdB <0) que a outra potência P0
+    .
+    Quando P1
+     representar a potência de um sinal (S - Signal) e P0
+     a
+    potência de um ruído (N - Noise) designamos a razão entre as
+    potências de razão sinal/ruído (SNR – Signal Noise Ratio).
+    
+        A razão entre tensões também pode ser expressas em decibéis através
+    da equação:
+    
+    \begin{equation}
+    {\displaystyle G_{dB}} = 10\log_{10}(\frac{{\displaystyle V_{2 1}}/{\displaystyle Z_{0}}}{{\displaystyle V_{2 0}}/{\displaystyle Z_{0}}}) = 20\log_{10}|\frac{{\displaystyle V_{1}}}{{\displaystyle V_{0}}}|
+        
+    \end{equation}
+    
+        Essa relação de tensões em dB é equivalente a relação de potencias
+    entre os pontos se as impedâncias Z0
+     e Z1
+     forem iguais. No entanto se
+    forem diferentes, é incorreto utilizar essa medida. Veja porque abaixo:
+    
+    \begin{equation}
+        {\displaystyle G_{dB}} =10\log_{10}(\frac{{\displaystyle P_{1}}}{{\displaystyle P_{0}}}) = 10\log_{10}(\frac{{\displaystyle V_{2 1}}/{\displaystyle Z_{0}}}{{\displaystyle V_{2 0}}/{\displaystyle Z_{1}}})
+    \end{equation} 
+    
+    Se Z1=Z0 então:
+    
+    \begin{equation}
+        {\displaystyle G_{dB}} =10\log_{10}(\frac{{\displaystyle V_{1}}}{{\displaystyle V_{0}}})^{2} = 20\log_{10}|\frac{{\displaystyle V_{1}}}{{\displaystyle V_{0}}}|
+    \end{equation}
+    
+    se Z1 \neq Z0 então 
+    
+    \begin{equation}
+        {\displaystyle G_{dB}} = 20\log_{10}|\frac{{\displaystyle V_{1}}}{{\displaystyle V_{0}}}|
+        + 10\log_{10}\frac{{\displaystyle Z_{0}}}{{\displaystyle Z_{1}}}
+    \end{equation}
+    
+\subsection{Medida absoluta de potência em dB
+(dBm)}
+
+        O dBm ou dBmW é o nível absoluto de potência em dB, em relação à
+    potência de 1mW. É usado em telecomunicações como uma medida de
+    potência absoluta devido a sua capacidade de expressar tanto valores
+    muito grandes como muito pequenos de uma forma curta. A grande
+    vantagem do uso do dBm é que sua medida independe da impedância.
+    Para expressar um potência PmW como PdBm usa-se
+
+    \begin{equation}
+        {\displaystyle P_{dBm}} = 10\log_{10}\frac{{\displaystyle P_{w}}}{1mW}
+    \end{equation}
+    
+    Quando o valor P x dBm = > 0, então a potência PmW é x dB maior que
+1mW. Se P x dBm = < 0, então a potência PmW é x dB menor que 1mW.
+
+Outras medidas de potência absoluta que são raramente usadas:
+
+
+\begin{center}
+    \begin{tabular}{|l|c|}
+        \hline  
+            dBW & potência absoluta relativa a 1 watt.\\ 
+        \hline
+            dBf & potência absoluta relativa a 1 femtowatt. \\
+        \hline
+            dBk & potência absoluta relativa a 1 kilowatt.\\ 
+        \hline
+        \end{tabular}
+    \end{center}
+
+    
+\subsection{Cabeçalhos e rodapés customizados}
+
+    Medida absoluta de tensão em dB (dBu)
+    
+    \begin{equation}
+         {\displaystyle G_{dB}} = 20\log_{10}|\frac{{\displaystyle V_{1}}}{{\displaystyle V_{0}}}|
+    \end{equation}
+    
+    substituirmos a tensão V0
+ pelo valor 0.775 V que equivale a potência
+de 1mW (0dBm) quando aplicado a uma impedância de 600Ω, teremos
+uma forma de expressar em valores absolutos a tensão de um ponto do
+sistema. A impedância de 600 omega
+é o valor padronizado para a maioria
+dos circuitos de voz em telefonia pelo ITU-T. A unidade obtida é conhecida por VdBu . A transformação de uma tensão V1
+ em dBu é feita
+através de:
+
+\begin{equation}
+     {\displaystyle G_{dB}} = 20\log_{10}|\frac{{\displaystyle V_{1}}}{1V}|
+\end{equation}
+
+As vezes também é usada a abreviação dBv, mas dBu é mais comum
+pois dBv é facilmente confundida com dBV que é a medida da tensão
+absoluta relativa a 1 volt.
+
+
+\subsection{Operações com dBm:
+}
+    Dada uma certa potência absoluta expressa em dBm, a soma (ou
+    subtração) de um valor em dB significa, em escala linear, a multiplicação
+    (ou divisão) da potência pelo fator correspondente. O resultado é uma
+    nova potência absoluta, portanto expressa em dBm.
+
+    \begin{equation}
+        {\displaystyle P2_{dBm}} = {\displaystyle P1_{dBm}} + {\displaystyle G_{dB}} \Rightarrow {\displaystyle P2_{w}} = {\displaystyle P1_{w}} \times {\displaystyle G_{\frac{w}{w}}} 
+    \end{equation}
+    
+    Assim, se dobramos uma potência teremos em dB
+
+    \begin{equation}
+        {\displaystyle P2_{dBm}} = {\displaystyle P1_{dBm}} + 3dB \Rightarrow {\displaystyle P2_{w}} = {\displaystyle P1_{w}} \times {\displaystyle 2_{\frac{w}{w}}} 
+    \end{equation}
+    
+    Se reduzimos a potência a metade então
+    
+    \begin{equation}
+        {\displaystyle P2_{dBm}} = {\displaystyle P1_{dBm}} - 3dB \Rightarrow {\displaystyle P2_{w}} = \frac{{\displaystyle P1_{w}}}{{\displaystyle 2_{\frac{w}{w}}} } 
+    \end{equation}
+
+Ou seja, somar 3dB equivale a dobrar a potência enquanto diminuir 3dB
+corresponde reduzir a potência à metade.
+A comparação de dois valores expressos em dBm pode ser feita
+subtraindo os valores P2,dBm - P1,dBm e obtendo-se a razão entre a potências (P2 / P1 ) em dB. Note que neste caso o resultado é em dB,
+pois se trata de uma razão entre potencias e não é uma potência
+absoluta
+
+    \begin{equation}
+        {\displaystyle G_{dB}} = 10\log_{10}(\frac{{\displaystyle P_{2}}}{\displaystyle P_{1}}) = {\displaystyle P2_{dBm}} - {\displaystyle P1_{dBm}}
+    \end{equation}
+
+A subtração de duas potências dadas em dBm resulta no valor em dB
+da razão dessas duas potências. O valor de potência em dBm somado
+(ou subtraído) à dB resulta num novo valor de potência em dBm. Duas
+potências dadas em dBm não podem ser somadas.
+Quanto tivermos duas ou mais potências dadas em dBm e quisermos
+saber a soma resultante, desde que os sinais que produzem essas
+potências sejam descorrelacionados, as potências terão que ser
+passadas para a escala linear (w), somas e o resultado retornado para a
+escala logarítmica (dBm).
+
+\subsection{Decibel relativo (dBr)}
+Esta unidade, denominada dB relativo, é utilizada para indicar a
+atenuação ou o ganho em um ponto qualquer de um sistema, em
+relação a um ponto de referência do sistema. O ponto de referência é
+definido como tendo um nível de 0dBr, e todos os outros pontos tem
+seus níveis indicados com níveis relativos a esse de referência. O ponto
+de referência pode, em princípio, ser arbitrariamente definido como
+sendo qualquer ponto do sistema, ou mesmo fora dele.
+Deve-se notar que os níveis relativos não estão relacionados
+diretamente com a potência ou amplitudes reais no sistema, podendo
+ser indicados mesmo na ausência de qualquer sinal.
+
+\subsection{Potência absoluta do ponto de referência
+(dBm0)}
+    
+    A unidade dBm0 é a potência absoluta, em dBm, medida no ponto de
+referência - nível relativo zero do sistema (0dBr). Esta unidade é
+normalmente usada para indicar a potência de sinais de níveis fixos tais
+como: sinais de teste, tons de sinalização, pilotos, etc. Acrescenta-se o
+zero "0" para significar que o nível em dBm corresponde ao valor
+medido no ponto de referência.
+Em um sistema se o ponto de referência tem um determinado nível
+absoluto (por exemplo -20dBm), então se diz que em qualquer ponto do
+sistema este sinal tem essa potência em -20dBm0. A potência absoluta
+nos diversos pontos do sistema é obtida somando-se a potência dBm0
+com a potência dBr do ponto. 
+
+
+
+    \begin{equation}
+        {\displaystyle P_{A,dBm}} =  {\displaystyle P_{A,dBm0}} +  {\displaystyle P_{A,dBr}}
+    \end{equation}
+    
+Assim por exemplo, um ponto com 5dBr e potência de -20dBm0 terá
+-15dBm de potencia absoluta. 
+
+\subsection{Uso de dBu para medir dBm}
+
+Em telecomunicações, para se medir o nível de
+potência em dBm de um determinado ponto de um
+circuito, normalmente se termina o sistema com
+uma carga resistiva igual a impedância nominal do
+sistema e mede-se a tensão através de um
+voltímetro que tem uma escala calibrada conforme a figura mostrada ao
+lado. Se a impedância característica no ponto de teste é de 600omega, a
+potência em dBm é a mesma do nível obtido em dBu.
+
+\begin{equation}
+        {\displaystyle P_{dBm}} = {\displaystyle V_{dBu}} 
+    \end{equation}
+
+Se a impedância for diferente de 600omega, então a potência em dBm será
+obtida pela leitura em dBu acrescido do fator de correção K.
+
+\begin{equation}
+    {\displaystyle P_{dBm}} = {\displaystyle P_{dBu}} + K
+\end{equation}
+
+onde
+
+\begin{equation}
+    K = 10\log_{10}\frac{600}{ {\displaystyle Z_{1}}}
+\end{equation}
+
+A tabela abaixo mostra o fator de correção K para alguns valores de
+impedância
+
+\input{tabela.tex}
+
+\section*{Considerações finais}
+\addcontentsline{toc}{section}{Considerações finais}
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ---
+% Título e resumo em língua estrangeira
+% ---
+
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+
+% titulo em inglês
+\titulo{Canonical academic article model with \abnTeX}
+\emptythanks
+\maketitle
+
+% resumo em português
+\renewcommand{\resumoname}{Abstract}
+\begin{resumoumacoluna}
+ \begin{otherlanguage*}{english}
+   According to ABNT NBR 6022:2003, an abstract in foreign language is a back
+   matter mandatory element.
+
+   \vspace{\onelineskip}
+ 
+   \noindent
+   \textbf{Key-words}: latex. abntex.
+ \end{otherlanguage*}  
+\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Há diversas soluções prontas para glossário em LaTeX. 
+% Consulte o manual do abnTeX2 para obter sugestões.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+
+\end{document}
